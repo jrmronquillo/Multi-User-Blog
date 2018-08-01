@@ -1,0 +1,91 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="nav-bar">
+            <div class="blog-button col-md-1">
+                <a href="/blog" style="text-decoration: none;" class="blog-button">Home</a>
+            </div>
+             <div class="blog-button col-md-1">
+                <a href="/about" style="text-decoration: none;" class="blog-button">About</a>
+            </div>
+
+            {% if user =='Guest' %}
+            <div class="blog-button col-md-1">
+                <a href="/login" style="text-decoration: none;" class="blog-button">Login</a>
+            </div>
+            <div class="col-md-9">
+
+            </div>
+            <div class="row">
+
+            </div>
+
+            {% else %}
+            <div class="blog-button col-md-2">
+                <a href="/newPost" style="text-decoration: none;" class="blog-button">New Post</a>
+            </div>
+
+            <div class="blog-button col-md-1">
+                <a href="/logout" style="text-decoration: none;" class="blog-button">Logout</a>
+            </div>
+
+            <div class="col-md-6">
+
+            </div>
+
+            {% endif %}
+</div>
+            <h2> Welcome, {{user}}!</h2>
+
+{% for post in posts %}
+        <div class="blog">
+            <div class="blog-created">{{post.created}}</div>
+            <div class="blog-title row">{{post.subject}}</div>
+            <hr>
+            <div class="author row">Written by: {{post.author.name}}
+            <div class="col-md-9"></div>
+            {% if post.author.name == user %}
+                <a href ="/blog/{{post.key().id()}}/edit" class="nav">Edit/ </a>
+                <a href ="/blog/{{post.key().id()}}/delete" class="nav">Delete </a>
+            {% endif %}
+            </div>
+            <hr>
+            <div class="blog-content">{{post.content}}</div>
+
+            <hr>
+            <div class="row">
+                <div class="likes">Likes:{{post.likes}}</div>
+                <form method="post" action="/blog/{{post.key().id()}}/like">
+                    <input class="like" id="{{post.key().id()}}" type="submit" name="like" value="like">
+                </form>
+                <div class="error">{{error}}</div>
+
+            </div>
+
+
+
+            <div class="commentArea">Comments:  <a href ="/blog/{{post.key().id()}}/comment" style="text-decoration: none;" class="nav"><button class='medium-button'>Add Comment</button></a></div><br>
+            <div class="comments">
+                 {% for comment in post.comments %}
+                    <div class="comment-entry">
+                       {% if post.key().id() == comment.postId %}
+                            {{comment.name}}:{{comment.comment}}
+                            {% if comment.name == user %}
+                                <a href="/blog/{{comment.key().id()}}/editComment" class="nav-comments">Edit</a>
+                                <a href="/blog/{{comment.key().id()}}/deleteComment" class="nav-comments">Delete</a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+            <hr>
+
+            </div>
+        </div>
+    {% else %}
+{% endfor %}
+
+
+
+{% endblock %}

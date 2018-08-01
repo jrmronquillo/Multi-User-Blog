@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+        <div class="nav-bar">
+            <div class="blog-button col-md-1">
+                <a href="/blog" style="text-decoration: none;" class="blog-button">Home</a>
+            </div>
+            <div class="blog-button col-md-1">
+                <a href="/about" style="text-decoration: none;" class="blog-button">About</a>
+            </div>
+            <div class="col-md-10">
+            </div>
+        </div>
+        <div class="page-title">Signup</div>
+        <form method="post">
+            <table class="row">
+                <tr>
+                    <td class="label">
+                        Username
+                    </td>
+                    <td>
+                        <input type="text" name="username" value="{{username}}">
+                    </td>
+                    <td class="error">
+                        {{error_username}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="label">
+                        Password
+                    </td>
+                    <td>
+                        <input type="password" name="password" value="">
+                    </td>
+                    <td class="error">
+                        {{error_password}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="label">
+                        Verify Password
+                    </td>
+                    <td>
+                        <input type="password" name="verify" value="">
+                    </td>
+                    <td class="error">
+                        {{error_verify}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="label">
+                        Email (optional)
+                    </td>
+                    <td>
+                        <input type="text" name="email" value="{{email}}">
+                    </td>
+                    <td class="error">
+                        {{error_email}}
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" class="medium-button" value="Sign Up">
+        </form>
+        <form action="/login">
+            <input type="submit" class="medium-button" value="Login">
+        </form>
+
+{% endblock %}

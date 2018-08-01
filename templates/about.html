@@ -1,0 +1,83 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+       <div class="nav-bar">
+            <div class="blog-button col-md-1">
+                <a href="/blog" style="text-decoration: none;" class="blog-button">Home</a>
+            </div>
+            <div class="blog-button col-md-1">
+                <a href="/about" style="text-decoration: none;" class="blog-button">About</a>
+            </div>
+
+            {% if username == 'Guest' %}
+            <div class="blog-button col-md-1">
+                <a href="/login" style="text-decoration: none;" class="blog-button">Login</a>
+            </div>
+            <div class="col-md-9">
+
+            </div>
+
+            {% else %}
+
+            <div class="blog-button col-md-2">
+                <a href="/newPost" style="text-decoration: none;" class="blog-button">New Post</a>
+            </div>
+
+            <div class="blog-button col-md-1">
+                <a href="/logout" style="text-decoration: none;" class="blog-button">Logout</a>
+            </div>
+
+            <div class="col-md-6">
+
+            </div>
+
+            {% endif %}
+
+        </div>
+            <h2> Welcome, {{username}}!</h2>
+        <div class="page-title">
+            About
+        </div>
+            <div class="about-main-text">
+            <p>
+            Hi, my name is Jerome Ronquillo. This project is my first time creating a multi-user blog using the skills I learned in Udacity's Full-Stack Development course. The following is the rubric I used as a guideline for the functionality of the blog:
+            </p>
+            <div class="about-headers">
+                <b>Site Usability</b>
+            </div>
+            <p>
+            User is directed to login, logout, and signup pages as appropriate. E.g., login page should have a link to signup page and vice-versa; logout page is only available to logged in user.
+            </p>
+            <div class="about-headers">
+                <b>Links to Edit Blog Pages are Available to Users</b>
+            </div>
+            <p>
+            Users editing a page can click on a link to cancel the edit and go back to viewing that page.
+            </p>
+            <div class="about-headers">
+                <b>User Accounts are Appropriately Handled</b>
+            </div>
+            <p>
+            Users are able to create accounts, login, and logout correctly. Account information is properly retained. Existing users can revisit the site and log back in without having to recreate their accounts each time. Usernames are unique. Usernames are unique. Attempting to create a duplicate user results in an error message. Passwords are secure and appropriately used.
+            Stored passwords are hashed. Passwords are appropriately checked during login. User cookie is set securely.
+            </p>
+            <div class="about-headers">
+                <b>Permissions</b>
+            </div>
+            <p>
+            User permissions are appropriate for logged out users.
+            Logged out users are redirected to the login page when attempting to create, edit, delete, or like a blog post.
+            User permissions are appropriate for logged in users.
+            Logged in users can create, edit, or delete blog posts they themselves have created.
+            Users should only be able to like posts once and should not be able to like their own post.
+            Comment permissions are enforced.
+            Only signed in users can post comments.
+            Users can only edit and delete comments they themselves have made.
+            </p>
+            <div class="about-headers">
+                <b>Thanks</b>
+            </div>
+            <p>
+            If you somehow got to this line, just want to say hope you enjoy the blog! Thanks, Jerome</p>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="page-title">Edit Post</div>
+    <form method="post">
+        <label>
+            <div class="label-title">subject</div>
+            <input type="text" class="title" name="subject" value="{{post.subject}}">
+        </label>
+
+        <label>
+            <div class="label-title">comment</div>
+            <textarea name="content" rows="25" cols="50">{{post.content}}</textarea>
+        </label>
+
+        <div class="error" >{{error}}</div>
+
+        <input type="submit" class="medium-button">
+        <a href="/blog">Cancel</a>
+    </form>
+{% endblock %}

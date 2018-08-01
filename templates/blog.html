@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>/ascii/</title>
+    </head>
+    <style type="text/css">
+    body{
+        font-family: sans-serif;
+        width: 800px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+
+    </style>
+
+    <body>
+        <h1>/blog/</h1>
+        <hr>
+
+        {% for blog in blogs %}
+            <div class = "blog">
+                <div class="blog-title">{{blog.title}}</div>
+                <pre class="blog-body">{{blog.blog}}</pre>
+            </div>
+        {% endfor %}
+
+    </body>
+</html>

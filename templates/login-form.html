@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <div class="nav-bar">
+            <div class="blog-button col-md-1">
+                <a href="/blog" style="text-decoration: none;" class="blog-button">Home</a>
+            </div>
+            <div class="blog-button col-md-1">
+                <a href="/about" style="text-decoration: none;" class="blog-button">About</a>
+            </div>
+            <div class="col-md-10">
+            </div>
+    </div>
+
+
+    <div class="page-title">Login</div>
+    <form method="post">
+      <table class="row">
+        <tr>
+          <td class="label">
+            Username
+          </td>
+          <td>
+            <input type="text" name="username" value="{{username}}">
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Password
+          </td>
+          <td>
+            <input type="password" name="password" value="">
+          </td>
+        </tr>
+      </table>
+
+      <div class="error row">
+        {{error}}
+      </div>
+
+      <input type="submit" class="medium-button" value="Login">
+    </form>
+    <form action="/signup">
+      <input type="submit" class="medium-button" value="Sign Up!">
+    </form>
+{% endblock %}

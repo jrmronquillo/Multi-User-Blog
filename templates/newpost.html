@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+         <div class="nav-bar">
+            <div class="blog-button col-md-1">
+                <a href="/blog" style="text-decoration: none;" class="blog-button">Home</a>
+            </div>
+            <div class="blog-button col-md-1">
+                <a href="/about" style="text-decoration: none;" class="blog-button">About</a>
+            </div>
+
+            {% if username == 'Guest' %}
+            <div class="blog-button col-md-1">
+                <a href="/login" style="text-decoration: none;" class="blog-button">Login</a>
+            </div>
+            <div class="col-md-10">
+
+            </div>
+
+            {% else %}
+
+            <div class="blog-button col-md-2">
+                <a href="/newPost" style="text-decoration: none;" class="blog-button">New Post</a>
+            </div>
+
+            <div class="blog-button col-md-1">
+                <a href="/logout" style="text-decoration: none;" class="blog-button">Logout</a>
+            </div>
+
+            <div class="col-md-6">
+
+            </div>
+
+            {% endif %}
+
+        </div>
+        <h2> Welcome, {{username}}!</h2>
+        <div class="row">
+            <div class="page-title">New Post</div>
+            <hr>
+        </div>
+            <form method="post">
+                <div class="row">
+                <label>
+                    <div class="label-title">Subject</div>
+                    <input type="text" class="title" name="subject" value="{{title}}">
+                </label>
+                </div>
+                <label>
+                    <div class="label-title">Content</div>
+                    <textarea name="content">{{blog}}</textarea>
+                </label>
+
+                <div class="error">{{error}}</div>
+
+                <input type="submit" class="submit">
+                <a href="/blog">Cancel</a>
+            </form>
+{% endblock %}
